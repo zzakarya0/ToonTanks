@@ -3,6 +3,7 @@
 
 #include "BasePawn.h"
 #include "Components/CapsuleComponent.h"
+#include "DrawDebugHelpers.h"
 
 // Sets default values
 ABasePawn::ABasePawn()
@@ -37,5 +38,13 @@ void ABasePawn::Tick(float DeltaTime)
 
 }
 
+void ABasePawn::RotateTurret(FVector TargetPoint, float DeltaTime) {
+	FVector ToTarget = TargetPoint - turretMesh->GetComponentLocation();
+	FRotator LookDirection = FRotator(0.f, ToTarget.Rotation().Yaw, 0.f);
 
+	turretMesh->SetWorldRotation(FMath::RInterpConstantTo(turretMesh->GetComponentRotation(), LookDirection, DeltaTime, TurretRotationSpeed));
+}
 
+void ABasePawn::Fire() {
+	DrawDebugSphere(GetWorld(), projectileSpawnPoint->GetComponentLocation(), 15.f, 15, FColor::Blue, false, 3.f);
+}

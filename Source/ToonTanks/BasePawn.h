@@ -21,6 +21,9 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	void RotateTurret(FVector TargetPoint, float DeltaTime);
+	
+	void Fire();
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -34,4 +37,6 @@ private:
 	UStaticMeshComponent* turretMesh;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	USceneComponent* projectileSpawnPoint;
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	float TurretRotationSpeed;
 };
