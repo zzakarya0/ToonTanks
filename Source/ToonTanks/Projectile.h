@@ -24,6 +24,15 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 private:
+	UPROPERTY(EditDefaultsOnly, Category = "Combat Components")
+	float Damage = 20.f;
+
 	UPROPERTY(EditDefaultsOnly)
 	UStaticMeshComponent* ProjectileMesh;
+
+	UPROPERTY(EditAnywhere, Category = "Combat Components")
+	class UProjectileMovementComponent* ProjectileMovementComp;
+
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 };

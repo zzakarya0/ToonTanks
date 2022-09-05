@@ -31,12 +31,22 @@ public:
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	UCapsuleComponent* capsuleCollider;
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* baseMesh;
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	UStaticMeshComponent* turretMesh;
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	USceneComponent* projectileSpawnPoint;
+
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<class AProjectile> ProjectileClass;
+
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float TurretRotationSpeed;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Health Component")
+	class UHealthComponent* HealthComp;
 };

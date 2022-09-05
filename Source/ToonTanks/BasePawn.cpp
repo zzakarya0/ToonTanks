@@ -3,7 +3,9 @@
 
 #include "BasePawn.h"
 #include "Components/CapsuleComponent.h"
-#include "DrawDebugHelpers.h"
+//#include "DrawDebugHelpers.h"
+#include "Projectile.h"
+#include "HealthComponent.h"
 
 // Sets default values
 ABasePawn::ABasePawn()
@@ -22,6 +24,8 @@ ABasePawn::ABasePawn()
 
 	projectileSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("Projectile Spawn"));
 	projectileSpawnPoint->SetupAttachment(turretMesh);
+
+	HealthComp = CreateDefaultSubobject<UHealthComponent>(TEXT("Health Component"));
 }
 
 // Called when the game starts or when spawned
@@ -46,5 +50,10 @@ void ABasePawn::RotateTurret(FVector TargetPoint, float DeltaTime) {
 }
 
 void ABasePawn::Fire() {
-	DrawDebugSphere(GetWorld(), projectileSpawnPoint->GetComponentLocation(), 15.f, 15, FColor::Blue, false, 3.f);
+	//DrawDebugSphere(GetWorld(), projectileSpawnPoint->GetComponentLocation(), 15.f, 15, FColor::Blue, false, 3.f);
+
+	if (ProjectileClass) {
+		AProjectile* projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileClass, projectileSpawnPoint->GetComponentLocation(), projectileSpawnPoint->GetComponentRotation());
+		projectile->SetOwner(this);
+	}
 }
