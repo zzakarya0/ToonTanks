@@ -32,4 +32,6 @@ private:
 	float MaxHealth = 100.f;
 
 	float CurrentHealth = 0.f;
+
+	class ATanksGameMode* GameMode;
 };

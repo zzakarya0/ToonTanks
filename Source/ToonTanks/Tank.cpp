@@ -54,3 +54,14 @@ void ATank::Turn(float scale) {
 
 	AddActorLocalRotation(DeltaRotation, true);
 }
+
+void ATank::HandleDestruction() {
+	Super::HandleDestruction();
+
+	DisableInput(PlayerController);
+	PlayerController->bShowMouseCursor = false;
+	SetActorHiddenInGame(true);
+	//PrimaryActorTick.bCanEverTick = false;
+	SetActorTickEnabled(false);
+	
+}

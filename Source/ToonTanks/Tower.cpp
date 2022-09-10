@@ -30,3 +30,9 @@ bool ATower::IsInFireRange() {
 
 	return (FVector::Distance(GetActorLocation(), PlayerTank->GetActorLocation()) <= FireRange);
 }
+
+void ATower::HandleDestruction() {
+	Super::HandleDestruction();
+
+	Destroy();
+}

@@ -28,6 +28,8 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	virtual void HandleDestruction();
+
 private:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	UCapsuleComponent* capsuleCollider;
@@ -47,6 +49,6 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float TurretRotationSpeed;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Health Component")
+	UPROPERTY(EditAnywhere, Category = "Health Component")
 	class UHealthComponent* HealthComp;
 };
