@@ -36,9 +36,9 @@ void AProjectile::Tick(float DeltaTime) {
 void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit) {
 	//UE_LOG(LogTemp, Display, TEXT("HIT COMP: %s, OTHER ACTOR: %s, OTHER COMP: %s, NORMAL IMPULSE: %s"), *HitComp->GetName(), *OtherActor->GetName(), *OtherComp->GetName(), *NormalImpulse.ToCompactString());
 
-	if (OtherActor && OtherActor != this && OtherActor != GetOwner()) {
+	if (OtherActor && OtherActor != this && OtherActor != GetOwner())
 		UGameplayStatics::ApplyDamage(OtherActor, Damage, GetOwner()->GetInstigatorController(), this, UDamageType::StaticClass());
-		Destroy();
-	}
+	
+	Destroy();
 }
 

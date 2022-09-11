@@ -58,8 +58,8 @@ void ATank::Turn(float scale) {
 void ATank::HandleDestruction() {
 	Super::HandleDestruction();
 
-	DisableInput(PlayerController);
-	PlayerController->bShowMouseCursor = false;
+	//DisableInput(PlayerController);
+	//PlayerController->bShowMouseCursor = false;
 	SetActorHiddenInGame(true);
 	//PrimaryActorTick.bCanEverTick = false;
 	SetActorTickEnabled(false);
