@@ -11,14 +11,23 @@ void ATanksGameMode::BeginPlay() {
 	Super::BeginPlay();
 
 	HandleGameStart();
+	EnemiesCount = GetEnemiesCount();
 }
 
 void ATanksGameMode::ActorDied(AActor* DeadActor) {
 	//UE_LOG(LogTemp, Warning, TEXT("Actor Died!!"));
 
-	ABasePawn* Pawn = Cast<ABasePawn>(DeadActor);
-	if (Pawn) Pawn->HandleDestruction();
-	if (Cast<ATank>(Pawn)) TankPlayerController->SetPlayerEnabledState(false);
+	ABasePawn* deadPawn = Cast<ABasePawn>(DeadActor);
+	if (deadPawn) deadPawn->HandleDestruction();
+
+	if (Cast<ATank>(deadPawn)) {
+		TankPlayerController->SetPlayerEnabledState(false);
+		GameOver(false);
+	} 
+	else if (Cast<ATower>(deadPawn)) {
+		--EnemiesCount;
+		if (!EnemiesCount) GameOver(true);
+	}
 }
 
 void ATanksGameMode::HandleGameStart() {
@@ -34,3 +43,9 @@ void ATanksGameMode::HandleGameStart() {
 	}
 }
 
+int32 ATanksGameMode::GetEnemiesCount() {
+	TArray<AActor*> outEnemies;
+	UGameplayStatics::GetAllActorsOfClass(this, ATower::StaticClass(), outEnemies);
+
+	return outEnemies.Num();
+}

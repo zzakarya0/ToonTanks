@@ -23,13 +23,22 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void StartGame();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void GameOver(bool bPlayerWon);
+
 private:
 	class ATank* PlayerTank;
+
 	class AToonTanksPlayerController* TankPlayerController;
+
 	float TimerRate = 3.f;
 
 	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	FTimerHandle PlayerEnableTimerHandle;
 
 	void HandleGameStart();
+
+	int32 EnemiesCount;
+
+	int32 GetEnemiesCount();
 };
