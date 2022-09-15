@@ -57,4 +57,7 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Effects")
 	class USoundBase* DeathSound;
+
+	UPROPERTY(EditAnywhere, Category = "Effects")
+	TSubclassOf<class UCameraShakeBase> DeathCameraShakeClass;
 };
