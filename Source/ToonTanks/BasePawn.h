@@ -51,4 +51,7 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "Health Component")
 	class UHealthComponent* HealthComp;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Effects")
+	class UParticleSystem* DeathEffect;
 };

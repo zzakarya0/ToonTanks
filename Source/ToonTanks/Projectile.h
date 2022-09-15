@@ -35,4 +35,10 @@ private:
 
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
+	UPROPERTY(EditDefaultsOnly, Category = "Effects")
+	class UParticleSystem* HitParticles;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Effects")
+	class UParticleSystemComponent* TrailEffect;
 };
