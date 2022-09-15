@@ -62,6 +62,6 @@ void ABasePawn::Fire() {
 void ABasePawn::HandleDestruction() {
 
 	// Add Sound, Particle Effects
-	if (DeathEffect)
-		UGameplayStatics::SpawnEmitterAtLocation(this, DeathEffect, GetActorLocation(), GetActorRotation());
+	if (DeathEffect) UGameplayStatics::SpawnEmitterAtLocation(this, DeathEffect, GetActorLocation(), GetActorRotation());
+	if (DeathSound) UGameplayStatics::PlaySoundAtLocation(this, DeathSound, GetActorLocation());
 }

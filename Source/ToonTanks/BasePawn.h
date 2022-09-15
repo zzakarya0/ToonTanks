@@ -54,4 +54,7 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Effects")
 	class UParticleSystem* DeathEffect;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Effects")
+	class USoundBase* DeathSound;
 };

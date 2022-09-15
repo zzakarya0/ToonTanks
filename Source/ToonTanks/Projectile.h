@@ -41,4 +41,10 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Effects")
 	class UParticleSystemComponent* TrailEffect;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Effects")
+	class USoundBase* LaunchSound;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Effects")
+	USoundBase* HitSound;
 };
