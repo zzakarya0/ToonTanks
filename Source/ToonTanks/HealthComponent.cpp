@@ -11,8 +11,6 @@ UHealthComponent::UHealthComponent()
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
-
-	// ...
 }
 
 // Called when the game starts
@@ -33,8 +31,7 @@ void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 }
 
 void UHealthComponent::OnTakeDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser) {
-	UE_LOG(LogTemp, Display, TEXT("       HEALTH: %f"), CurrentHealth);
-
+	//UE_LOG(LogTemp, Display, TEXT("       HEALTH: %f"), CurrentHealth);
 	if (Damage == 0) return;
 
 	CurrentHealth -= Damage;

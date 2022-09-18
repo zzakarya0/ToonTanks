@@ -17,4 +17,15 @@ class TOONTANKS_API AToonTanksPlayerController : public APlayerController
 public:
 	void SetPlayerEnabledState(bool bPlayerEnabled);
 
+	void UpdateScore(AActor* DeadActor);
+
+protected:
+	virtual void BeginPlay() override;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void UpdateScoreHUD();
+
+private:
+	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	int32 CurrentScore = 0;
 };

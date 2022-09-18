@@ -17,12 +17,13 @@ void ATower::BeginPlay() {
 void ATower::Tick(float DeltaTime) {
 	Super::Tick(DeltaTime);
 
-	if (IsInFireRange()) RotateTurret(PlayerTank->GetActorLocation(), DeltaTime);
+	if (IsInFireRange()) 
+		RotateTurret(PlayerTank->GetActorLocation(), DeltaTime);
 }
 
 void ATower::CheckFireCondition() {
-	
-	if (IsInFireRange() && PlayerTank->GetTankState()) Fire();
+	if (IsInFireRange() && PlayerTank->GetTankState()) 
+		Fire();
 }
 
 bool ATower::IsInFireRange() {

@@ -15,8 +15,6 @@ void ATanksGameMode::BeginPlay() {
 }
 
 void ATanksGameMode::ActorDied(AActor* DeadActor) {
-	//UE_LOG(LogTemp, Warning, TEXT("Actor Died!!"));
-
 	ABasePawn* deadPawn = Cast<ABasePawn>(DeadActor);
 	if (deadPawn) deadPawn->HandleDestruction();
 
@@ -26,6 +24,8 @@ void ATanksGameMode::ActorDied(AActor* DeadActor) {
 	} 
 	else if (Cast<ATower>(deadPawn)) {
 		--EnemiesCount;
+		TankPlayerController->UpdateScore(DeadActor);
+
 		if (!EnemiesCount) GameOver(true);
 	}
 }
