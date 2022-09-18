@@ -27,6 +27,8 @@ public:
 
 	virtual void HandleDestruction() override;
 
+	bool GetTankState() const;
+
 protected:
 	virtual void BeginPlay() override;
 
@@ -34,14 +36,21 @@ protected:
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera Components", meta = (AllowPrivateAccess = "true"))
 	USpringArmComponent* springArm;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera Components", meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* cameraComponent;
+
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float MovementSpeed;
+
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float TurnRate;
 	
 	void Move(float scale);
+
 	void Turn(float scale);
+
 	APlayerController* PlayerController;
+
+	bool bIsAlive;
 };

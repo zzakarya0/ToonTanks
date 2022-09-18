@@ -14,6 +14,8 @@ ATank::ATank() {
 
 	cameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("Main Camera"));
 	cameraComponent->SetupAttachment(springArm);
+
+	bIsAlive = true;
 }
 
 void ATank::BeginPlay() {
@@ -58,10 +60,9 @@ void ATank::Turn(float scale) {
 void ATank::HandleDestruction() {
 	Super::HandleDestruction();
 
-	//DisableInput(PlayerController);
-	//PlayerController->bShowMouseCursor = false;
 	SetActorHiddenInGame(true);
-	//PrimaryActorTick.bCanEverTick = false;
 	SetActorTickEnabled(false);
-	
+	bIsAlive = false;
 }
+
+bool ATank::GetTankState() const { return bIsAlive; }

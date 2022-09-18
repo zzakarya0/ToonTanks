@@ -22,7 +22,7 @@ void ATower::Tick(float DeltaTime) {
 
 void ATower::CheckFireCondition() {
 	
-	if (IsInFireRange()) Fire();
+	if (IsInFireRange() && PlayerTank->GetTankState()) Fire();
 }
 
 bool ATower::IsInFireRange() {
