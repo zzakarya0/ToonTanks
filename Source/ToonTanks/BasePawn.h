@@ -49,7 +49,7 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float TurretRotationSpeed;
 
-	UPROPERTY(EditAnywhere, Category = "Health Component")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Health Component", meta = (AllowPrivateAccess = "true"))
 	class UHealthComponent* HealthComp;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Effects")

@@ -35,5 +35,9 @@ void UHealthComponent::OnTakeDamage(AActor* DamagedActor, float Damage, const UD
 	if (Damage == 0) return;
 
 	CurrentHealth -= Damage;
+	UpdateHealthHUD();
+
 	if (GameMode && CurrentHealth <= 0.f) GameMode->ActorDied(DamagedActor);
 }
+
+float UHealthComponent::GetHealthPercent() const { return CurrentHealth / 100.f; }

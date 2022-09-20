@@ -16,6 +16,9 @@ public:
 	// Sets default values for this component's properties
 	UHealthComponent();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void UpdateHealthHUD() const;
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
@@ -25,6 +28,9 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 private:
+	UFUNCTION(BlueprintCallable)
+	float GetHealthPercent() const;
+
 	UFUNCTION()
 	void OnTakeDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser);
 

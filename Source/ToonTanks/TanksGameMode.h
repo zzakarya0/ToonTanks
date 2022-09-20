@@ -31,7 +31,7 @@ private:
 
 	class AToonTanksPlayerController* TankPlayerController;
 
-	float TimerRate = 3.f;
+	float StartTimerRate = 5.f;
 
 	UPROPERTY(BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	FTimerHandle PlayerEnableTimerHandle;

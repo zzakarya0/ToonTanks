@@ -22,10 +22,7 @@ void AToonTanksPlayerController::SetPlayerEnabledState(bool bPlayerEnabled) {
 void AToonTanksPlayerController::UpdateScore(AActor* DeadActor) {
 	if (DeadActor->ActorHasTag(TEXT("Normal Enemy"))) CurrentScore += 10;
 
-	//UE_LOG(LogTemp, Display, TEXT("Current Score: %d"), CurrentScore);
-
-
-
+	// other enemy types have different score
 
 	UpdateScoreHUD();
 }

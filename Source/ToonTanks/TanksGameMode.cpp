@@ -39,7 +39,7 @@ void ATanksGameMode::HandleGameStart() {
 		TankPlayerController->SetPlayerEnabledState(false);
 
 		FTimerDelegate PlayerStartDelegate = FTimerDelegate::CreateUObject(TankPlayerController, &AToonTanksPlayerController::SetPlayerEnabledState, true);
-		GetWorldTimerManager().SetTimer(PlayerEnableTimerHandle, PlayerStartDelegate, TimerRate, false);
+		GetWorldTimerManager().SetTimer(PlayerEnableTimerHandle, PlayerStartDelegate, StartTimerRate, false);
 	}
 }
 
