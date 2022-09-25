@@ -17,6 +17,9 @@ public:
 	// Sets default values for this pawn's properties
 	ABasePawn();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void UpdateHealthWidget() const;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -24,6 +27,7 @@ protected:
 	void RotateTurret(FVector TargetPoint, float DeltaTime);
 	
 	void Fire();
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -49,7 +53,7 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float TurretRotationSpeed;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Health Component", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Health Component", meta = (AllowPrivateAccess = "true"))
 	class UHealthComponent* HealthComp;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Effects")

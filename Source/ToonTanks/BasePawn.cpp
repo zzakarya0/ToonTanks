@@ -27,7 +27,7 @@ ABasePawn::ABasePawn()
 	projectileSpawnPoint = CreateDefaultSubobject<USceneComponent>(TEXT("Projectile Spawn"));
 	projectileSpawnPoint->SetupAttachment(turretMesh);
 
-	HealthComp = CreateDefaultSubobject<UHealthComponent>(TEXT("Health Component"));
+	HealthComp = CreateDefaultSubobject<UHealthComponent>(TEXT("Health"));
 }
 
 // Called when the game starts or when spawned

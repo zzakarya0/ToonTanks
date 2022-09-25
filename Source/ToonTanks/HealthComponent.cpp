@@ -4,6 +4,7 @@
 #include "HealthComponent.h"
 #include "TanksGameMode.h"
 #include "Kismet/GameplayStatics.h"
+#include "BasePawn.h"
 
 // Sets default values for this component's properties
 UHealthComponent::UHealthComponent()
@@ -35,9 +36,23 @@ void UHealthComponent::OnTakeDamage(AActor* DamagedActor, float Damage, const UD
 	if (Damage == 0) return;
 
 	CurrentHealth -= Damage;
-	UpdateHealthHUD();
+	UpdatePawnHealthWidget();
 
 	if (GameMode && CurrentHealth <= 0.f) GameMode->ActorDied(DamagedActor);
 }
 
-float UHealthComponent::GetHealthPercent() const { return CurrentHealth / 100.f; }
+void UHealthComponent::UpdatePawnHealthWidget() const {
+	//GetHealthPercent();
+	ABasePawn* owner = Cast<ABasePawn>(GetOwner());
+
+	if (owner) owner->UpdateHealthWidget();
+}
+
+float UHealthComponent::GetHealthPercent() const { 
+	UE_LOG(LogTemp, Warning, TEXT("CURRENT HEALTH: %d"), CurrentHealth);
+
+	float f = CurrentHealth / 100.f;
+	UE_LOG(LogTemp, Warning, TEXT("HEALTH PERCENT: %f"), f);
+
+	return f;
+}

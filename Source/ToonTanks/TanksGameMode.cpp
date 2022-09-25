@@ -21,6 +21,10 @@ void ATanksGameMode::ActorDied(AActor* DeadActor) {
 	if (Cast<ATank>(deadPawn)) {
 		TankPlayerController->SetPlayerEnabledState(false);
 		GameOver(false);
+
+
+		TankPlayerController->RestartLevel();
+		UE_LOG(LogTemp, Warning, TEXT("RESTARTING LEVEL!!"));
 	} 
 	else if (Cast<ATower>(deadPawn)) {
 		--EnemiesCount;

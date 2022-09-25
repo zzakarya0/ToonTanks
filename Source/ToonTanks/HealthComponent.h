@@ -16,14 +16,12 @@ public:
 	// Sets default values for this component's properties
 	UHealthComponent();
 
-	UFUNCTION(BlueprintImplementableEvent)
-	void UpdateHealthHUD() const;
-
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
 public:	
+
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
@@ -35,9 +33,9 @@ private:
 	void OnTakeDamage(AActor* DamagedActor, float Damage, const UDamageType* DamageType, AController* Instigator, AActor* DamageCauser);
 
 	UPROPERTY(EditDefaultsOnly, Category = "Health Components")
-	float MaxHealth = 100.f;
+	int32 MaxHealth = 100;
 
-	float CurrentHealth = 0.f;
-
+	int32 CurrentHealth = 0;
 	class ATanksGameMode* GameMode;
+	void UpdatePawnHealthWidget() const;
 };
